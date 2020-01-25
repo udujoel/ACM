@@ -8,11 +8,30 @@
 
         public string Email { get; set; }
 
-        public string Phone { get; set; }
 
         public string FullName {
-            get { return FirstName + ", " + LastName; }
+            get {
+                string fullName = FirstName + " " + LastName;
+                if (!string.IsNullOrWhiteSpace(fullName)) {
+
+                    if (!string.IsNullOrWhiteSpace(FirstName)) {
+                        fullName = LastName;
+                        }
+
+                    if (!string.IsNullOrWhiteSpace(LastName)) {
+                        fullName = FirstName;
+                        }
+
+                    }
+                else if (string.IsNullOrWhiteSpace(fullName)) {
+                    fullName = "";
+                    }
+
+
+                return fullName;
+                }
 
             }
+
         }
     }
