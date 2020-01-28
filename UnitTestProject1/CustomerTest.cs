@@ -16,7 +16,7 @@ namespace UnitTestProject1 {
                 };
 
 
-            string expected = "Arthur, King";
+            string expected = "King, Arthur";
 
             //act
             string actual = myCustomer.FullName;
@@ -56,6 +56,61 @@ namespace UnitTestProject1 {
             //assert
 
             Assert.AreEqual(actual , expected);
+            }
+
+        [TestMethod]
+        public void CustomerStaticTest() {
+            //arrange 
+            Customer customer1 = new Customer() {
+                LastName = "Bond"
+                };
+            Customer.InstanceCount++;
+
+            Customer customer2 = new Customer();
+            customer2.LastName = "Tim";
+            Customer.InstanceCount++;
+
+            Customer customer3 = new Customer();
+            customer3.LastName = "Ceaser";
+            Customer.InstanceCount++;
+            //act
+            int expected = 3;
+
+            //assert
+
+            Assert.AreEqual(Customer.InstanceCount , expected);
+            }
+
+        [TestMethod]
+        public void CustomerValidateMissingLastName() {
+            //arrange
+            Customer myCustomer = new Customer { Email = "BondJames@gmail.com" };
+            bool expected = false;
+
+            //act
+
+            bool actual = myCustomer.Validate();
+
+            //assert
+
+            Assert.AreEqual(expected , actual);
+            }
+        [TestMethod]
+        public void CustomerValidateValid() {
+            //arrange
+            Customer myCustomer = new Customer {
+                Email = "BondJames@gmail.com" ,
+                LastName = "Tony"
+                };
+            bool expected = true;
+
+            //act
+
+            bool actual = myCustomer.Validate();
+
+            //assert
+
+            Assert.AreEqual(expected , actual);
             }
         }
     }
