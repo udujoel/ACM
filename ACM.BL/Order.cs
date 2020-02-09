@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ACM.BL
 {
-    class Order
+    public class Order
     {
         public Order()
         {
