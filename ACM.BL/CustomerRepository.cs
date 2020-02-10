@@ -15,5 +15,12 @@
             }
             return customer;
         }
+
+        public bool Save(Customer customer)
+        {
+
+
+            return true;
+        }
     }
 }
